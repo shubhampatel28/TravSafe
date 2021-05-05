@@ -1,19 +1,19 @@
 {
   "function": {
-    "GetValues": {
+    "GetScoreActivity": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "api": {
-    "ModelAPI": {
+    "ExpressAPI": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "GetValues",
+          "resourceName": "GetScoreActivity",
           "attributes": [
             "Name",
             "Arn"
