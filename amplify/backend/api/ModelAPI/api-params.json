@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/values",
+            "lambdaFunction": "GetValues",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/values"
+        }
+    ],
+    "resourceName": "ModelAPI",
+    "apiName": "ModelAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "GetValues"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-finalfinalprojectrep-dev-234703-authRole",
+        "unAuthRoleName": "amplify-finalfinalprojectrep-dev-234703-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "GetValues",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
