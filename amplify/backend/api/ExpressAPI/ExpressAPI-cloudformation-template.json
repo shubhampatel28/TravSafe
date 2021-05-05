@@ -14,15 +14,15 @@
         },
     
     
-          "functionGetValuesName": {
+          "functionGetScoreActivityName": {
             "Type": "String",
-            "Default": "functionGetValuesName"
+            "Default": "functionGetScoreActivityName"
           },
         
           
-          "functionGetValuesArn": {
+          "functionGetScoreActivityArn": {
             "Type": "String",
-            "Default": "functionGetValuesArn"
+            "Default": "functionGetScoreActivityArn"
           }
         
           
@@ -45,16 +45,16 @@
         
         
         
-      "ModelAPI": {
+      "ExpressAPI": {
         "Type": "AWS::ApiGateway::RestApi",
         "Properties": {
           "Description": "",
-          "Name": "ModelAPI",
+          "Name": "ExpressAPI",
           "Body": {
             "swagger": "2.0",
             "info": {
               "version": "2018-05-24T17:52:00Z",
-              "title": "ModelAPI"
+              "title": "ExpressAPI"
             },
             "host": {
                 "Fn::Join": [
@@ -90,7 +90,7 @@
             ],
             "paths": {
               
-              "/values": {
+              "/score": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -176,7 +176,7 @@
                             
                             {
                                 
-                                "Ref": "functionGetValuesArn"
+                                "Ref": "functionGetScoreActivityArn"
                             },
                             
                             "/invocations"
@@ -189,7 +189,7 @@
                   }
                 }
               },
-              "/values/{proxy+}": {
+              "/score/{proxy+}": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -275,7 +275,7 @@
                           
                           {
                             
-                            "Ref": "functionGetValuesArn"
+                            "Ref": "functionGetScoreActivityArn"
                           },
                           
                           "/invocations"
@@ -332,12 +332,12 @@
                   
         
         
-        "functionGetValuesPermissionModelAPI": {
+        "functionGetScoreActivityPermissionExpressAPI": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functionGetValuesName"
+                        "Ref":  "functionGetScoreActivityName"
                     },
                     
                     "Action": "lambda:InvokeFunction",
@@ -356,7 +356,7 @@
                             },
                             ":",
                             {
-                                "Ref": "ModelAPI"
+                                "Ref": "ExpressAPI"
                             },
                             "/*/*/*"
                         ]
@@ -367,7 +367,7 @@
         
         
         
-      "DeploymentAPIGWModelAPI": {
+      "DeploymentAPIGWExpressAPI": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",
@@ -381,7 +381,7 @@
             ]
           },
           "RestApiId": {
-            "Ref": "ModelAPI"
+            "Ref": "ExpressAPI"
           }
         }
       }
@@ -389,15 +389,15 @@
     "Outputs": {
         "RootUrl": {
             "Description": "Root URL of the API gateway",
-            "Value": {"Fn::Join": ["", ["https://", {"Ref": "ModelAPI"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
+            "Value": {"Fn::Join": ["", ["https://", {"Ref": "ExpressAPI"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
         },
         "ApiName": {
           "Description": "API Friendly name",
-          "Value": "ModelAPI"
+          "Value": "ExpressAPI"
         },
         "ApiId": {
           "Description": "API ID (prefix of API URL)",
-          "Value": {"Ref": "ModelAPI"}
+          "Value": {"Ref": "ExpressAPI"}
         }
     }
   }

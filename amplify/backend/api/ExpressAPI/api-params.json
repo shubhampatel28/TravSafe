@@ -1,19 +1,19 @@
 {
     "paths": [
         {
-            "name": "/values",
-            "lambdaFunction": "GetValues",
+            "name": "/score",
+            "lambdaFunction": "GetScoreActivity",
             "privacy": {
                 "open": true
             },
-            "policyResourceName": "/values"
+            "policyResourceName": "/score"
         }
     ],
-    "resourceName": "ModelAPI",
-    "apiName": "ModelAPI",
+    "resourceName": "ExpressAPI",
+    "apiName": "ExpressAPI",
     "functionArns": [
         {
-            "lambdaFunction": "GetValues"
+            "lambdaFunction": "GetScoreActivity"
         }
     ],
     "privacy": {
@@ -25,7 +25,7 @@
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "GetValues",
+            "resourceName": "GetScoreActivity",
             "attributes": [
                 "Name",
                 "Arn"

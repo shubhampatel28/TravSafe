@@ -10,6 +10,14 @@
       "StackName": "amplify-finalfinalprojectrep-dev-234703",
       "StackId": "arn:aws:cloudformation:us-west-2:107007971636:stack/amplify-finalfinalprojectrep-dev-234703/b56f1a90-ad6d-11eb-b347-025f78cff165",
       "AmplifyAppId": "d32z9bq1qhm824"
+    },
+    "categories": {
+      "function": {
+        "GetScoreActivity": {
+          "deploymentBucketName": "amplify-finalfinalprojectrep-dev-234703-deployment",
+          "s3Key": "amplify-builds/GetScoreActivity-66344f2b376470536630-build.zip"
+        }
+      }
     }
   }
 }
