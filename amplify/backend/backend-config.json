@@ -1,31 +1,22 @@
 {
   "function": {
-    "GetScoreActivity": {
+    "GetWeatherActivity": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "GetWeatherActivity": {
+    "GetNewsActivity": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "GetScoreActivity": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "api": {
-    "ExpressAPI": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "GetScoreActivity",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    },
     "GetWeatherAPI": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
@@ -33,6 +24,34 @@
         {
           "category": "function",
           "resourceName": "GetWeatherActivity",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "GetNewsAPI": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "GetNewsActivity",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "GetScoreAPI": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "GetScoreActivity",
           "attributes": [
             "Name",
             "Arn"

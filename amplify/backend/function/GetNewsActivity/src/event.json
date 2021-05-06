@@ -1,7 +1,7 @@
 {
   "httpMethod": "GET",
-  "path": "/score",
+  "path": "/news",
   "queryStringParameters": {
-    "countryCode": "AU"
+    "newsQuery": "tesla" 
   }
 }

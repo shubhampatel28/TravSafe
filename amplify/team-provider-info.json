@@ -13,13 +13,17 @@
     },
     "categories": {
       "function": {
-        "GetScoreActivity": {
-          "deploymentBucketName": "amplify-finalfinalprojectrep-dev-234703-deployment",
-          "s3Key": "amplify-builds/GetScoreActivity-66344f2b376470536630-build.zip"
-        },
         "GetWeatherActivity": {
           "deploymentBucketName": "amplify-finalfinalprojectrep-dev-234703-deployment",
           "s3Key": "amplify-builds/GetWeatherActivity-5a45575854364e4a4a53-build.zip"
+        },
+        "GetNewsActivity": {
+          "deploymentBucketName": "amplify-finalfinalprojectrep-dev-234703-deployment",
+          "s3Key": "amplify-builds/GetNewsActivity-5073315755426834554b-build.zip"
+        },
+        "GetScoreActivity": {
+          "deploymentBucketName": "amplify-finalfinalprojectrep-dev-234703-deployment",
+          "s3Key": "amplify-builds/GetScoreActivity-31774a7a667459746a36-build.zip"
         }
       }
     }

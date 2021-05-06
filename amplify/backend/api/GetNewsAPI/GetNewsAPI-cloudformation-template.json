@@ -3,28 +3,22 @@
     "Description": "API Gateway resource stack creation using Amplify CLI",
     
     "Parameters": {
-        "authRoleName": {
-            "Type":  "String"
-        },
-        "unauthRoleName": {
-            "Type":  "String"
-        },
         "env": {
             "Type": "String"
         },
     
     
-          "functionGetScoreActivityName": {
+          "functionGetNewsActivityName": {
             "Type": "String",
-            "Default": "functionGetScoreActivityName"
+            "Default": "functionGetNewsActivityName"
           },
-        
+
           
-          "functionGetScoreActivityArn": {
+          "functionGetNewsActivityArn": {
             "Type": "String",
-            "Default": "functionGetScoreActivityArn"
+            "Default": "functionGetNewsActivityArn"
           }
-        
+
           
           
     
@@ -43,18 +37,16 @@
         
         
         
-        
-        
-      "ExpressAPI": {
+      "GetNewsAPI": {
         "Type": "AWS::ApiGateway::RestApi",
         "Properties": {
           "Description": "",
-          "Name": "ExpressAPI",
+          "Name": "GetNewsAPI",
           "Body": {
             "swagger": "2.0",
             "info": {
               "version": "2018-05-24T17:52:00Z",
-              "title": "ExpressAPI"
+              "title": "GetNewsAPI"
             },
             "host": {
                 "Fn::Join": [
@@ -82,7 +74,7 @@
                           }
                       ]
                   ]
-                } 
+                }
               ]
             },
             "schemes": [
@@ -90,7 +82,7 @@
             ],
             "paths": {
               
-              "/score": {
+              "/news": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -175,8 +167,8 @@
                             ":lambda:path/2015-03-31/functions/",
                             
                             {
-                                
-                                "Ref": "functionGetScoreActivityArn"
+
+                                "Ref": "functionGetNewsActivityArn"
                             },
                             
                             "/invocations"
@@ -189,7 +181,7 @@
                   }
                 }
               },
-              "/score/{proxy+}": {
+              "/news/{proxy+}": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -274,8 +266,8 @@
                           ":lambda:path/2015-03-31/functions/",
                           
                           {
-                            
-                            "Ref": "functionGetScoreActivityArn"
+
+                            "Ref": "functionGetNewsActivityArn"
                           },
                           
                           "/invocations"
@@ -287,7 +279,7 @@
                     "type": "aws_proxy"
                   }
                 }
-              }   
+              }
               
             },
             "securityDefinitions": {
@@ -329,15 +321,15 @@
         }
       },
 
-                  
+      
         
-        
-        "functionGetScoreActivityPermissionExpressAPI": {
+
+        "functionGetNewsActivityPermissionGetNewsAPI": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functionGetScoreActivityName"
+                        "Ref":  "functionGetNewsActivityName"
                     },
                     
                     "Action": "lambda:InvokeFunction",
@@ -356,7 +348,7 @@
                             },
                             ":",
                             {
-                                "Ref": "ExpressAPI"
+                                "Ref": "GetNewsAPI"
                             },
                             "/*/*/*"
                         ]
@@ -366,22 +358,22 @@
         },
         
         
-        
-      "DeploymentAPIGWExpressAPI": {
+
+      "DeploymentAPIGWGetNewsAPI": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",
           "StageName": {
             "Fn::If": [
               "ShouldNotCreateEnvResources",
-              "Prod", 
+              "Prod",
               {
                 "Ref": "env"
-              } 
+              }
             ]
           },
           "RestApiId": {
-            "Ref": "ExpressAPI"
+            "Ref": "GetNewsAPI"
           }
         }
       }
@@ -389,15 +381,15 @@
     "Outputs": {
         "RootUrl": {
             "Description": "Root URL of the API gateway",
-            "Value": {"Fn::Join": ["", ["https://", {"Ref": "ExpressAPI"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
+            "Value": {"Fn::Join": ["", ["https://", {"Ref": "GetNewsAPI"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
         },
         "ApiName": {
           "Description": "API Friendly name",
-          "Value": "ExpressAPI"
+          "Value": "GetNewsAPI"
         },
         "ApiId": {
           "Description": "API ID (prefix of API URL)",
-          "Value": {"Ref": "ExpressAPI"}
+          "Value": {"Ref": "GetNewsAPI"}
         }
     }
   }

@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "GetScoreActivity",
+            "GetNewsActivity",
             {
               "Fn::Join": [
                 "",
                 [
-                  "GetScoreActivity",
+                  "GetNewsActivity",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "finalfinalprojectrepLambdaRole51e6e5bb",
+            "finalfinalprojectrepLambdaRole723f55fe",
             {
               "Fn::Join": [
                 "",
                 [
-                  "finalfinalprojectrepLambdaRole51e6e5bb",
+                  "finalfinalprojectrepLambdaRole723f55fe",
                   "-",
                   {
                     "Ref": "env"

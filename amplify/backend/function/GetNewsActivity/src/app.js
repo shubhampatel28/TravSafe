@@ -10,7 +10,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
 var request = require("request");
-
 // declare a new express app
 var app = express();
 app.use(bodyParser.json());
@@ -18,25 +17,27 @@ app.use(awsServerlessExpressMiddleware.eventContext());
 
 // Enable CORS for all methods
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "*");
   next();
 });
 
-/**
+/**********************
  * Example get method *
- **/
+ **********************/
 
-app.get("/score", function (req, res) {
-  const countryCode = req.query.countryCode;
-  const requestUrl =
-    "https://www.travel-advisory.info/api?countrycode=" + countryCode;
-
-  request(requestUrl, function (error, response, body) {
+app.get("/news", function (req, res) {
+  // Add your code here
+  const newsQuery = req.query.newsQuery;
+  const apikey = "e25942f77a1249899e321f5b6f813995";
+  const requestURL =
+    "https://newsapi.org/v2/everything?q=" + newsQuery + "&apiKey=" + apikey;
+  console.log("genereaated url: ", requestURL);
+  request(requestURL, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.send(body);
     } else {
-      res.status(404).json({ errorMessage: "3rd Party API Error" });
+      res.status(404).json({ errorMessage: "API Error" });
     }
   });
 });
