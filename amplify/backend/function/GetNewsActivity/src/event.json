@@ -1,0 +1,7 @@
+{
+  "httpMethod": "GET",
+  "path": "/news",
+  "queryStringParameters": {
+    "newsQuery": "tesla" 
+  }
+}
