@@ -1,0 +1,8 @@
+{
+  "httpMethod": "GET",
+  "path": "/weather",
+  "queryStringParameters": {
+    "lat": "37.3382",
+    "lon": "121.8863"
+  }
+}
