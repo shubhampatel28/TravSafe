@@ -16,6 +16,10 @@
         "GetScoreActivity": {
           "deploymentBucketName": "amplify-finalfinalprojectrep-dev-234703-deployment",
           "s3Key": "amplify-builds/GetScoreActivity-66344f2b376470536630-build.zip"
+        },
+        "GetWeatherActivity": {
+          "deploymentBucketName": "amplify-finalfinalprojectrep-dev-234703-deployment",
+          "s3Key": "amplify-builds/GetWeatherActivity-5a45575854364e4a4a53-build.zip"
         }
       }
     }

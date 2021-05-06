@@ -15,7 +15,7 @@ import * as Location from "expo-location";
 
 // import { openWeatherKey } from './Secrets';
 const openWeatherKey = `784d33b15276446cb087cad165d9a0c3`;
-let url = `https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=minutely&appid=${openWeatherKey}`;
+let url = `https://9wvpq441xl.execute-api.us-west-2.amazonaws.com/dev/weather`;
 
 const WeatherScreen = () => {
   const [forecast, setForecast] = useState(null);
@@ -34,7 +34,7 @@ const WeatherScreen = () => {
     });
 
     const response = await fetch(
-      `${url}&lat=${location.coords.latitude}&lon=${location.coords.longitude}`
+      `${url}?lat=${location.coords.latitude}&lon=${location.coords.longitude}`
     );
     console.log(location);
     const data = await response.json();
@@ -44,7 +44,7 @@ const WeatherScreen = () => {
       console.log(data);
     } else {
       setForecast(data);
-      console.log(data);
+      console.log("Weather Data: ", data);
     }
 
     setRefreshing(false);
