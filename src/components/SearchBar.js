@@ -37,16 +37,18 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "baseline",
+    padding: "20px",
     
   },
   searchInput: {
     borderWidth: 2,
     borderRadius: 12,
     marginTop: 5,
-    borderColor: "darkgray",
+    borderColor: "lightgrey",
     width: "82%",
     height: 28,
     alignSelf: "flex-start",
+    backgroundColor: "lightgrey"
   },
   Ionicon: {
     fontSize: 28,

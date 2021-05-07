@@ -27,5 +27,34 @@
         }
       }
     }
+  },
+  "travamplif": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-finalfinalprojectrep-travamplif-05544-authRole",
+      "UnauthRoleArn": "arn:aws:iam::107007971636:role/amplify-finalfinalprojectrep-travamplif-05544-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::107007971636:role/amplify-finalfinalprojectrep-travamplif-05544-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",
+      "UnauthRoleName": "amplify-finalfinalprojectrep-travamplif-05544-unauthRole",
+      "StackName": "amplify-finalfinalprojectrep-travamplif-05544",
+      "StackId": "arn:aws:cloudformation:us-west-2:107007971636:stack/amplify-finalfinalprojectrep-travamplif-05544/773edac0-ae40-11eb-9eb9-02f69856dc3d",
+      "AmplifyAppId": "d32z9bq1qhm824"
+    },
+    "categories": {
+      "function": {
+        "GetWeatherActivity": {
+          "deploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",
+          "s3Key": "amplify-builds/GetWeatherActivity-5a45575854364e4a4a53-build.zip"
+        },
+        "GetNewsActivity": {
+          "deploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",
+          "s3Key": "amplify-builds/GetNewsActivity-4b7a7a6331624f50786a-build.zip"
+        },
+        "GetScoreActivity": {
+          "deploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",
+          "s3Key": "amplify-builds/GetScoreActivity-31774a7a667459746a36-build.zip"
+        }
+      }
+    }
   }
 }
