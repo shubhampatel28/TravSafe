@@ -52,7 +52,7 @@
         },
         "GetScoreActivity": {
           "deploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",
-          "s3Key": "amplify-builds/GetScoreActivity-31774a7a667459746a36-build.zip"
+          "s3Key": "amplify-builds/GetScoreActivity-42334b786e3247425a61-build.zip"
         }
       }
     }
