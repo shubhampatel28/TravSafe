@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     width: "100%",
     justifyContent: "center",
+    padding: 10
   },
   searchResultsContainer: {
     width: "90%",
@@ -120,15 +121,13 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
   },
   searchBox: {
-    width: "90%",
+    width: "100%",
     justifyContent: "center",
     height: 35,
     fontSize: 18,
-    borderRadius: 15,
-    borderColor: "#aaa",
+    borderRadius: 10,
     color: "#000",
-    backgroundColor: "#fff",
-    borderWidth: 1.5,
+    backgroundColor: "lightgrey",
     paddingLeft: 15,
     alignSelf: "center",
   },

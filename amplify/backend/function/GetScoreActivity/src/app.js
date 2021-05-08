@@ -23,10 +23,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-/**
- * Example get method *
- **/
-
 app.get("/score", function (req, res) {
   const countryCode = req.query.countryCode;
   const requestUrl =
@@ -35,6 +31,35 @@ app.get("/score", function (req, res) {
   request(requestUrl, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.send(body);
+    } else {
+      res.status(404).json({ errorMessage: "3rd Party API Error" });
+    }
+  });
+});
+
+app.get("/covidstats", function (req, res) {
+  const countryCode = req.query.countryCode;
+  const requestUrl =
+    "https://corona-api.com/countries/" + countryCode;
+
+  request(requestUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.send(body);
+    } else {
+      res.status(404).json({ errorMessage: "3rd Party API Error" });
+    }
+  });
+});
+
+app.get("/covidgraph", function (req, res) {
+  const countryCode = req.query.countryCode;
+  const requestUrl =
+    "https://corona.dnsforfamily.com/graph.png?c=" + countryCode;
+
+  request(requestUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      // Here just sending the image url, can render image on front-end with this url as image src
+      res.status(200).json({imageUrl: requestUrl});
     } else {
       res.status(404).json({ errorMessage: "3rd Party API Error" });
     }

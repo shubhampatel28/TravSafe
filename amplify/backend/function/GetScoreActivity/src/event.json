@@ -1,6 +1,6 @@
 {
   "httpMethod": "GET",
-  "path": "/score",
+  "path": "/covidgraph",
   "queryStringParameters": {
     "countryCode": "AU"
   }

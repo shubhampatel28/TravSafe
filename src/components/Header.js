@@ -45,10 +45,12 @@ const Header = () => {
 
 // define your styles
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+  },
   headerText: {
-    fontSize: 34,
-    marginBottom: 10,
+    fontSize: 30,
+    padding: 5,
+    fontFamily: "Verdana"
   },
   headerView: {
     flexDirection: "row",
@@ -59,6 +61,7 @@ const styles = StyleSheet.create({
   },
   Ionicon: {
     fontSize: 36,
+    paddingRight: 10
   },
   search: {
     alignSelf: "center",
