@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, SafeAreaView, StyleSheet } from "react-native";
+import { Text, View, SafeAreaView, StyleSheet, Dimensions } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import BottomTabNavigator from "./src/navigation/TabNavigator";
@@ -7,18 +7,21 @@ import Header from "./src/components/Header";
 import GooglePlacesAutoCompleteComponent from "./src/components/GooglePlacesAutoCompleteComponent";
 import AppState from "./src/context/AppState";
 
-import Amplify from 'aws-amplify'
-import config from './src/aws-exports'
-Amplify.configure(config)
+import Amplify from "aws-amplify";
+import config from "./src/aws-exports";
+Amplify.configure(config);
 
-import { withAuthenticator } from 'aws-amplify-react-native'
+import { withAuthenticator } from "aws-amplify-react-native";
+const { width, height } = Dimensions.get("window");
 
+// git commit -m 'Added News Screen Tabs And Seperated News End Points And Extended App State to support added Weather functionalities. Added weather functionalities'
 function App() {
   return (
     <AppState>
       <SafeAreaView style={styles.container}>
         <Header />
         <GooglePlacesAutoCompleteComponent />
+        {/* <GooglePlacesAutoCompleteComponent /> */}
         <NavigationContainer>
           <BottomTabNavigator />
         </NavigationContainer>
@@ -30,17 +33,21 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white"
+    backgroundColor: "white",
+  },
+  search: {
+    alignSelf: "center",
+    width: width * 0.8,
+    marginBottom: 5,
   },
 });
 
+// export default withAuthenticator(App,true)
 
-export default withAuthenticator(App,true)
-
-// export default () => {
-//   return (
-//     <AppState>
-//       <App />
-//     </AppState>
-//   );
-// };
+export default () => {
+  return (
+    <AppState>
+      <App />
+    </AppState>
+  );
+};

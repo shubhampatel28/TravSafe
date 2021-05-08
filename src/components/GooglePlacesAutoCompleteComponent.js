@@ -7,11 +7,13 @@ import {
   TextInput,
   StyleSheet,
   SafeAreaView,
+  Dimensions,
 } from "react-native";
 import axios from "axios";
 //import { useStateValue } from "../context/StateProvider";
 //import { StateContext } from "../context/StateProvider";
 import AppContext from "../context/app-context";
+const { width, height } = Dimensions.get("window");
 
 const API_KEY = "AIzaSyAyq6uZSqbqECm49ir6TDuEAUYr2RJRpCI";
 
@@ -19,6 +21,10 @@ export default function GooglePlacesAutocomplete(props) {
   const {
     setDestination,
     SET_DESTINATION_NAME,
+    SET_LATLONG_OBJECT,
+    SET_STATE_NAME,
+    SET_COUNTRY_NAME,
+    SET_DESTINATION_OBJECT,
   } = React.useContext(AppContext);
 
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -34,7 +40,7 @@ export default function GooglePlacesAutocomplete(props) {
       axios
         .request({
           method: "post",
-          url: `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${API_KEY}&input=${searchKeyword}`,
+          url: `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${API_KEY}&type=(cities)&input=${searchKeyword}`,
         })
         .then((response) => {
           console.log(
@@ -58,9 +64,7 @@ export default function GooglePlacesAutocomplete(props) {
   return (
     <View style={styles.autocompleteContainer}>
       <TextInput
-        placeholder={
-          searchKeyword != "" ? searchKeyword : "Search for an address"
-        }
+        placeholder={"Search..."}
         returnKeyType="search"
         style={styles.searchBox}
         placeholderTextColor="#000"
@@ -77,12 +81,18 @@ export default function GooglePlacesAutocomplete(props) {
               <TouchableOpacity
                 style={styles.resultItem}
                 onPress={() => {
-                  setSearchKeyword(item.description);
+                  setSearchKeyword("");
                   setIsShowingResults(false);
                   SET_DESTINATION_NAME(item.structured_formatting.main_text);
+                  if (item.terms[2] !== undefined) {
+                    SET_COUNTRY_NAME(item.terms[2]["value"]);
+                    SET_STATE_NAME(item.terms[1]["value"]);
+                  } else {
+                    SET_COUNTRY_NAME(item.terms[1]["value"]);
+                  }
                   console.log(
                     "selected item from the list of places (Places Component -> Render -> FlatList -> TouchableOpacity)   >>>>>>",
-                    item.structured_formatting.main_text
+                    item.terms[1]["value"]
                   );
                 }}
               >
@@ -102,7 +112,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
     width: "100%",
     justifyContent: "center",
-    padding: 10
   },
   searchResultsContainer: {
     width: "90%",
@@ -119,67 +128,21 @@ const styles = StyleSheet.create({
     borderBottomColor: "#ccc",
     borderBottomWidth: 1,
     paddingLeft: 15,
+    width: width * 0.8,
   },
   searchBox: {
-    width: "100%",
+    width: "90%",
     justifyContent: "center",
     height: 35,
     fontSize: 18,
-    borderRadius: 10,
+    borderRadius: 15,
+    borderColor: "#aaa",
     color: "#000",
-    backgroundColor: "lightgrey",
+    // backgroundColor: transparent,
+    borderWidth: 1.5,
     paddingLeft: 15,
     alignSelf: "center",
+    marginBottom: 5,
+    width: width * 0.7,
   },
 });
-
-/*
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-
-const GooglePlacesAutoCompleteComponent = () => {
-  return (
-    <GooglePlacesAutocomplete
-      placeholder="Search"
-      listViewDisplayed="null" // true/false/undefined
-      fetchDetails={true}
-      onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
-        console.log(data, details);
-      }}
-      query={{
-        key: "AIzaSyAyq6uZSqbqECm49ir6TDuEAUYr2RJRpCI",
-        language: "en",
-      }}
-      requestUrl={{
-        useOnPlatform: "all", // or "all"
-        url:
-          "https://cors-anywhere.herokuGooglePlacesAutocomplete.com/https://maps.googleapis.com/maps/api", // or any proxy server that hits https://maps.googleapis.com/maps/api
-      }}
-      styles={{
-        textInputContainer: {
-          backgroundColor: "rgba(0,0,0,0)",
-          borderTopWidth: 0,
-          borderBottomWidth: 0,
-          height: 10,
-        },
-        textInput: {
-          marginLeft: 0,
-          marginRight: 0,
-          height: 38,
-          color: "#5d5d5d",
-          fontSize: 16,
-        },
-        predefinedPlacesDescription: {
-          color: "#1faadb",
-        },
-      }}
-    />
-  );
-};
-
-export default GooglePlacesAutoCompleteComponent;
-
-const styles = StyleSheet.create({});
-*/

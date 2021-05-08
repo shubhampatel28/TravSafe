@@ -10,10 +10,8 @@ import {
 } from "react-native";
 import Ionicon from "react-native-vector-icons/Ionicons";
 import SearchBar from "./SearchBar";
-import GooglePlacesAutoCompleteComponent from "./GooglePlacesAutoCompleteComponent";
 import AppContext from "../context/app-context";
 const { width, height } = Dimensions.get("window");
-
 //make this component available to the app
 
 // create a component
@@ -35,7 +33,7 @@ const Header = () => {
     <View style={styles.container}>
       <View style={styles.headerView}>
         <Text style={styles.headerText}>
-          {destinationName}
+          {destinationName !== null ? destinationName : "Destination"}
         </Text>
         <Ionicon style={styles.Ionicon} name="person-circle-outline" />
       </View>
@@ -45,12 +43,11 @@ const Header = () => {
 
 // define your styles
 const styles = StyleSheet.create({
-  container: {
-  },
+  container: {},
   headerText: {
     fontSize: 30,
     padding: 5,
-    fontFamily: "Verdana"
+    fontFamily: "Verdana",
   },
   headerView: {
     flexDirection: "row",
@@ -61,10 +58,12 @@ const styles = StyleSheet.create({
   },
   Ionicon: {
     fontSize: 36,
-    paddingRight: 10
+    paddingRight: 10,
   },
   search: {
     alignSelf: "center",
+    width: width * 0.8,
+    marginBottom: 5,
   },
 });
 

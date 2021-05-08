@@ -9,6 +9,7 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 import { Card, ListItem, Icon } from "react-native-elements";
 import Separator from "./Separator";
@@ -26,23 +27,30 @@ const Newscard = ({ item }) => {
       </View>
       <Separator />
       <View style={styles.imgdataContainer}>
-        <Image
-          style={styles.image}
-          source={item.urlToImage ? { uri: item.urlToImage } : null}
-        />
+        {item.urlToImage ? (
+          <Image
+            style={styles.image}
+            source={item.urlToImage ? { uri: item.urlToImage } : null}
+          />
+        ) : (
+          <></>
+        )}
         <ScrollView style={styles.scrollView}>
           <Text style={styles.description}>{item.description}</Text>
         </ScrollView>
       </View>
-      <Separator />
-      <View style={styles.dateAndButtonContainer}>
-        <Text style={styles.date}>
-          {moment(item.publishedAt).format("MMMM Do YYYY")}
-        </Text>
-        <TouchableOpacity title="View More" style={styles.viewButton}>
-          <Text> View More </Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        title="View More"
+        style={styles.viewButton}
+        onPress={() => {
+          Linking.openURL(item.url).catch((err) => {
+            console.error("Failed opening page because: ", err);
+            alert("Failed to open page");
+          });
+        }}
+      >
+        <Text> View More </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -50,7 +58,7 @@ const Newscard = ({ item }) => {
 const styles = StyleSheet.create({
   cardView: {
     backgroundColor: "white",
-    margin: width * 0.05,
+    margin: width * 0.1,
     borderRadius: width * 0.05,
     shadowColor: "#000",
     shadowOffset: { width: 0.5, height: 0.5 },
