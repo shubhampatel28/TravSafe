@@ -6,87 +6,71 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
-
-
-
-var express = require('express')
-var bodyParser = require('body-parser')
-var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+var express = require("express");
+var bodyParser = require("body-parser");
+var awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
+var request = require("request");
 
 // declare a new express app
-var app = express()
-app.use(bodyParser.json())
-app.use(awsServerlessExpressMiddleware.eventContext())
+var app = express();
+app.use(bodyParser.json());
+app.use(awsServerlessExpressMiddleware.eventContext());
 
 // Enable CORS for all methods
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "*")
-  next()
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
 });
 
+app.get("/score", function (req, res) {
+  const countryCode = req.query.countryCode;
+  const requestUrl =
+    "https://www.travel-advisory.info/api?countrycode=" + countryCode;
 
-/**********************
- * Example get method *
- **********************/
-
-app.get('/score', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  request(requestUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.send(body);
+    } else {
+      res.status(404).json({ errorMessage: "3rd Party API Error" });
+    }
+  });
 });
 
-app.get('/score/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+app.get("/covidstats", function (req, res) {
+  const countryCode = req.query.countryCode;
+  const requestUrl =
+    "https://corona-api.com/countries/" + countryCode;
+
+  request(requestUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.send(body);
+    } else {
+      res.status(404).json({ errorMessage: "3rd Party API Error" });
+    }
+  });
 });
 
-/****************************
-* Example post method *
-****************************/
+app.get("/covidgraph", function (req, res) {
+  const countryCode = req.query.countryCode;
+  const requestUrl =
+    "https://corona.dnsforfamily.com/graph.png?c=" + countryCode;
 
-app.post('/score', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  request(requestUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      // Here just sending the image url, can render image on front-end with this url as image src
+      res.status(200).json({imageUrl: requestUrl});
+    } else {
+      res.status(404).json({ errorMessage: "3rd Party API Error" });
+    }
+  });
 });
 
-app.post('/score/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example put method *
-****************************/
-
-app.put('/score', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-app.put('/score/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
-* Example delete method *
-****************************/
-
-app.delete('/score', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
-
-app.delete('/score/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
-
-app.listen(3000, function() {
-    console.log("App started")
+app.listen(3000, function () {
+  console.log("App started");
 });
 
 // Export the app object. When executing the application local this does nothing. However,
 // to port it to AWS Lambda we will create a wrapper around that will load the app from
 // this file
-module.exports = app
+module.exports = app;

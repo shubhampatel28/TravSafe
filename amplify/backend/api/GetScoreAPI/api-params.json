@@ -1,0 +1,52 @@
+{
+    "paths": [
+        {
+            "name": "/score",
+            "lambdaFunction": "GetScoreActivity",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/score"
+        },
+        {
+            "name": "/covidstats",
+            "lambdaFunction": "GetScoreActivity",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/covidstats"
+        },
+        {
+            "name": "/covidgraph",
+            "lambdaFunction": "GetScoreActivity",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/covidgraph"
+        }
+    ],
+    "resourceName": "GetScoreAPI",
+    "apiName": "GetScoreAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "GetScoreActivity"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-finalfinalprojectrep-travamplif-05544-authRole",
+        "unAuthRoleName": "amplify-finalfinalprojectrep-travamplif-05544-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "GetScoreActivity",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "9a535017"
+}
