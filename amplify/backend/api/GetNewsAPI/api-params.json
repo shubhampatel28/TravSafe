@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/news",
+      "lambdaFunction": "GetNewsActivity",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/news"
+    }
+  ],
+  "resourceName": "GetNewsAPI",
+  "apiName": "GetNewsAPI",
+  "functionArns": [
+    {
+      "lambdaFunction": "GetNewsActivity"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-finalfinalprojectrep-dev-234703-authRole",
+    "unAuthRoleName": "amplify-finalfinalprojectrep-dev-234703-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "GetNewsActivity",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}
