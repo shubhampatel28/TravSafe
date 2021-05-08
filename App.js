@@ -7,19 +7,18 @@ import Header from "./src/components/Header";
 import GooglePlacesAutoCompleteComponent from "./src/components/GooglePlacesAutoCompleteComponent";
 import AppState from "./src/context/AppState";
 
-import Amplify from 'aws-amplify'
-import config from './src/aws-exports'
-Amplify.configure(config)
 
 function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Header />
-      <GooglePlacesAutoCompleteComponent />
-      <NavigationContainer>
-        <BottomTabNavigator />
-      </NavigationContainer>
-    </SafeAreaView>
+    <AppState>
+      <SafeAreaView style={styles.container}>
+        <Header />
+        <GooglePlacesAutoCompleteComponent />
+        <NavigationContainer>
+          <BottomTabNavigator />
+        </NavigationContainer>
+      </SafeAreaView>
+    </AppState>
   );
 }
 
@@ -30,10 +29,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default () => {
-  return (
-    <AppState>
-      <App />
-    </AppState>
-  );
-};
+
+export default withAuthenticator(App,true)
+
+// export default () => {
+//   return (
+//     <AppState>
+//       <App />
+//     </AppState>
+//   );
+// };
