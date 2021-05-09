@@ -43,14 +43,11 @@ export default function GooglePlacesAutocomplete(props) {
           url: `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${API_KEY}&type=(cities)&input=${searchKeyword}`,
         })
         .then((response) => {
-          console.log(
-            "Data Received from places search autocomplete call (searchLocation function Places Component) >>>>>>>> ",
-            response.data
-          );
           setSearchResults(response.data.predictions);
           setIsShowingResults(true);
         })
         .catch((e) => {
+          alert("errror fetching auto search results... please bear with us");
           console.log(e.response);
         });
     }
@@ -90,10 +87,6 @@ export default function GooglePlacesAutocomplete(props) {
                   } else {
                     SET_COUNTRY_NAME(item.terms[1]["value"]);
                   }
-                  console.log(
-                    "selected item from the list of places (Places Component -> Render -> FlatList -> TouchableOpacity)   >>>>>>",
-                    item.terms[1]["value"]
-                  );
                 }}
               >
                 <Text>{item.description}</Text>

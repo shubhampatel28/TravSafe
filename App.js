@@ -14,14 +14,12 @@ Amplify.configure(config);
 import { withAuthenticator } from "aws-amplify-react-native";
 const { width, height } = Dimensions.get("window");
 
-// git commit -m 'Added News Screen Tabs And Seperated News End Points And Extended App State to support added Weather functionalities. Added weather functionalities'
 function App() {
   return (
     <AppState>
       <SafeAreaView style={styles.container}>
         <Header />
         <GooglePlacesAutoCompleteComponent />
-        {/* <GooglePlacesAutoCompleteComponent /> */}
         <NavigationContainer>
           <BottomTabNavigator />
         </NavigationContainer>

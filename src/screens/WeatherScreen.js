@@ -13,11 +13,8 @@ import {
 } from "react-native";
 import * as Location from "expo-location";
 import AppContext from "../context/app-context";
-// import weatherAPI from "../APIs/WeatherApi";
 
-// import { openWeatherKey } from './Secrets';
-const openWeatherKey = `3e4f8ac709f60876dd58b2ef3e5dfe1c`;
-let url = `https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=minutely&appid=3e4f8ac709f60876dd58b2ef3e5dfe1c`;
+let url = `https://hsxyjbrb23.execute-api.us-west-2.amazonaws.com/travamplif/weather`;
 
 const WeatherScreen = () => {
   const {
@@ -33,7 +30,7 @@ const WeatherScreen = () => {
 
   const loadForecast = async (dat) => {
     setRefreshing(true);
-    const response = await fetch(`${url}&lat=${dat.lat}&lon=${dat.lng}`);
+    const response = await fetch(`${url}?lat=${dat.lat}&lon=${dat.lng}`);
     const data = await response.json();
 
     if (!response.ok) {

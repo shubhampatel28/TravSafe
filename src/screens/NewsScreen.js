@@ -52,45 +52,36 @@ const NewsScreen = ({ navigation }) => {
   function getCovisNewsFromAPI() {
     newsAPI
       .get(
-        `everything?q=${
-          stateName !== ""
+        `?newsQuery=${
+          countryName !== ""
             ? "(" + countryName + "%20AND%20Covid)"
             : "(Global%20AND%20Covid)"
-        }&sortBy=relevance&apiKey=b875c051fb364f538cf93b357340d105`
+        }&sortBy=relevance`
       )
       .then(async function (response) {
         // console.log(response);
         setNews(response.data);
       })
       .catch(function (error) {
+        alert("Failed to fetch news: ", error);
         console.log(error);
       });
   }
 
   function getCrimeNewsFromAPI() {
-    // https://newsapi.org/v2/top-headlines?country=us&apiKey=b875c051fb364f538cf93b357340d105
-    {
-      /* 
-      `everything?q=${
-          stateName !== ""
-            ? "(" + countryName + "%20AND%20(Police%20OR%20Crime))"
-            : "(Global%20AND%20Crime)"
-        }&apiKey=b875c051fb364f538cf93b357340d105` 
-        */
-    }
     newsAPI
       .get(
-        `everything?q=${
-          stateName !== ""
+        `?newsQuery=${
+          countryName !== ""
             ? "(" + countryName + "%20AND%20(Police))"
             : "(Global%20AND%20Crime)"
-        }&pageSize=20&apiKey=b875c051fb364f538cf93b357340d105`
+        }&pageSize=20`
       )
       .then(async function (response) {
-        console.log("Crime Response", response.data["articles"][0]);
         setCrimeNews(response.data);
       })
       .catch(function (error) {
+        alert("Failed to fetch news: ", error);
         console.log(error);
       });
   }
@@ -145,21 +136,25 @@ const NewsScreen = ({ navigation }) => {
       </View>
 
       {covidNewsDisplay ? (
-        <FlatList
-          data={news.articles}
-          keyExtractor={(item, index) => "key" + index}
-          renderItem={({ item }) => {
-            return <Newscard item={item} />;
-          }}
-        />
+        <View>
+          <FlatList
+            data={news.articles}
+            keyExtractor={(item, index) => "key" + index}
+            renderItem={({ item }) => {
+              return <Newscard item={item} />;
+            }}
+          />
+        </View>
       ) : crimeNewsDisplay ? (
-        <FlatList
-          data={crimeNews.articles}
-          keyExtractor={(item, index) => "key" + index}
-          renderItem={({ item }) => {
-            return <Newscard item={item} />;
-          }}
-        />
+        <View style={styles.flatList}>
+          <FlatList
+            data={crimeNews.articles}
+            keyExtractor={(item, index) => "key" + index}
+            renderItem={({ item }) => {
+              return <Newscard item={item} />;
+            }}
+          />
+        </View>
       ) : (
         <View></View>
       )}
@@ -209,6 +204,10 @@ const styles = StyleSheet.create({
     fontWeight: "normal",
     textAlign: "center",
     color: "#000",
+  },
+  flatList: {
+    alignContent: "center",
+    marginBottom: 10,
   },
 });
 
