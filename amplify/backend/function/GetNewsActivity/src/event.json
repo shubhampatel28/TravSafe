@@ -2,6 +2,8 @@
   "httpMethod": "GET",
   "path": "/news",
   "queryStringParameters": {
-    "newsQuery": "tesla" 
+    "newsQuery": "(India%20AND%20Crime)",
+    "sortBy": "relevence",
+    "pageSize": "10"
   }
 }

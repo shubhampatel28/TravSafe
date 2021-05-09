@@ -45,26 +45,6 @@ app.get("/weather", function (req, res) {
       }
     }
   );
-  // .then((response) => {
-  //   console.log("MyLog: ", response);
-  //   response.json();
-  //   // const data = response.json();
-  //   // const data = JSON.stringify(response);
-  //   res.send(response.body);
-  // })
-  // // .then((json = response.json()) => {
-  // //   console.log("MyLog Json: ", json);
-  // //   if (json !== null) {
-  // //     // console.log(json);
-  // //     res.status(200).send(json); //{ success: "get call succeed!", url: req.url },
-  // //     res.end();
-  // //   }
-  // // })
-  // .catch((err) => {
-  //   res.status(404);
-  // });
-
-  // res.json({ success: "get call succeed!", url: req.url });
 });
 
 app.get("/weather/*", function (req, res) {

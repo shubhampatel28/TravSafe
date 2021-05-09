@@ -105,7 +105,6 @@ const styles = StyleSheet.create({
   },
   dateAndButtonContainer: {
     flexDirection: "row",
-    height: 20,
   },
   date: {
     flex: 3.1,

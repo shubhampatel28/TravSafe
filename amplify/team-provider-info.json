@@ -48,7 +48,7 @@
         },
         "GetNewsActivity": {
           "deploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",
-          "s3Key": "amplify-builds/GetNewsActivity-4b7a7a6331624f50786a-build.zip"
+          "s3Key": "amplify-builds/GetNewsActivity-56327471424c6b474c71-build.zip"
         },
         "GetScoreActivity": {
           "deploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",

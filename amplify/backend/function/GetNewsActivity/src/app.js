@@ -28,10 +28,17 @@ app.use(function (req, res, next) {
 
 app.get("/news", function (req, res) {
   // Add your code here
+  console.log(req.query);
   const newsQuery = req.query.newsQuery;
   const apikey = "e25942f77a1249899e321f5b6f813995";
   const requestURL =
-    "https://newsapi.org/v2/everything?q=" + newsQuery + "&apiKey=" + apikey;
+    "https://newsapi.org/v2/everything?q=" +
+    newsQuery +
+    "&sortBy=relevence" +
+    "&pageSize=" +
+    req.query.pageSize +
+    "&apiKey=" +
+    apikey;
   console.log("genereaated url: ", requestURL);
   request(requestURL, function (error, response, body) {
     if (!error && response.statusCode == 200) {
