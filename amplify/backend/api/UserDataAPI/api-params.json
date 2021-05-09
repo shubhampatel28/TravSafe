@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/userdata",
+            "lambdaFunction": "GetUserDataActivity",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/userdata"
+        }
+    ],
+    "resourceName": "UserDataAPI",
+    "apiName": "UserDataAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "GetUserDataActivity"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-finalfinalprojectrep-travamplif-05544-authRole",
+        "unAuthRoleName": "amplify-finalfinalprojectrep-travamplif-05544-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "GetUserDataActivity",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
