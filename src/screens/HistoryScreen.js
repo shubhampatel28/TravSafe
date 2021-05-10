@@ -1,4 +1,4 @@
-import React , { useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,8 @@ import { ScrollView } from "react-native-gesture-handler";
 import AppContext from "../context/app-context";
 import { withAuthenticator } from "aws-amplify-react-native";
 
-import { Auth } from 'aws-amplify';
+import Amplify from "@aws-amplify/core";
+import Auth from "@aws-amplify/auth";
 
 const DATA = [
   {
@@ -44,24 +45,25 @@ const DATA = [
 
 const Item = ({ title, score }) => (
   <View style={styles.item}>
-    <Text style={styles.title}> {title}  <Text style={styles.score}> {score} </Text>
-</Text>
+    <Text style={styles.title}>
+      {" "}
+      {title} <Text style={styles.score}> {score} </Text>
+    </Text>
   </View>
 );
 
 const HistoryScreen = () => {
-  const { user, SET_USER_NAME } = React.useContext(
-    AppContext
-  );
+  const { user, SET_USER_NAME } = React.useContext(AppContext);
 
   useEffect(() => {
     if (user === null) {
       Auth.currentAuthenticatedUser({
-        bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-        }).then(user => {
-          SET_USER_NAME(user.attributes.email)
+        bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+      })
+        .then((user) => {
+          SET_USER_NAME(user.attributes.email);
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     }
   }, [user]);
 
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
   score: {
     fontSize: 20,
     textAlign: "right",
-  }
+  },
 });
 
-export default withAuthenticator(HistoryScreen)
+export default withAuthenticator(HistoryScreen);

@@ -23,7 +23,7 @@ const BottomTabNavigator = () => {
 
           if (route.name === "Score") {
             iconName = focused ? "alert-circle" : "alert-circle-outline";
-          } else if (route.name === "Settings") {
+          } else if (route.name === "Extra") {
             iconName = focused ? "ios-list" : "ios-list-outline";
           } else if (route.name === "History") {
             iconName = focused ? "ios-bookmark" : "ios-bookmark-outline";
@@ -50,7 +50,7 @@ const BottomTabNavigator = () => {
       <Tab.Screen name="News" component={NewsScreen} />
       <Tab.Screen name="Weather" component={WeatherScreen} />
       <Tab.Screen name="History" component={History} />
-      <Tab.Screen name="Settings" component={Settings} />
+      {/* <Tab.Screen name="Extra" component={Settings} /> */}
     </Tab.Navigator>
   );
 };

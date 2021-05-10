@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import * as Location from "expo-location";
 import AppContext from "../context/app-context";
+import { Card, ListItem, Icon } from "react-native-elements";
 
 let url = `https://hsxyjbrb23.execute-api.us-west-2.amazonaws.com/travamplif/weather`;
 
@@ -67,13 +68,37 @@ const WeatherScreen = () => {
   if (!forecast) {
     return (
       <SafeAreaView style={styles.loading}>
-        <ActivityIndicator size="large" />
+        {destinationName !== null ? (
+          <ActivityIndicator size="large" />
+        ) : (
+          <View
+            style={{
+              width: "100%",
+              height: "100%",
+              textAlign: "center",
+              alignItems: "center",
+              flex: 1,
+            }}
+          >
+            <Card containerStyle={styles.innerCardContainer}>
+              <View
+                style={{
+                  width: "100%",
+                  textAlign: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text>Please select a destination to get the Weather!</Text>
+              </View>
+            </Card>
+          </View>
+        )}
       </SafeAreaView>
     );
   }
 
   const current = forecast.current.weather[0];
-  return (
+  return destinationName !== null ? (
     <SafeAreaView style={styles.container}>
       <ScrollView
         refreshControl={
@@ -148,6 +173,8 @@ const WeatherScreen = () => {
         })}
       </ScrollView>
     </SafeAreaView>
+  ) : (
+    <View></View>
   );
 };
 

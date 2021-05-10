@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 35,
     fontSize: 18,
-    borderRadius: 15,
+    borderRadius: 10,
     borderColor: "#aaa",
     color: "#000",
     // backgroundColor: transparent,
