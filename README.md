@@ -7,7 +7,7 @@
 
 ## What is TravSafe?
 
-![poster](images/Poster_Template.pdf)
+![poster](images/poster-temp.png)
 
 ## What does it do?
 
@@ -42,6 +42,8 @@
 
 # Meet The Team
 
-Saneel Daniel - Full Stack Developer - [Linkedin](https://www.linkedin.com/in/saneel-daniel/)
-Shubham Patel - Full Stack Developer - [Linkedin](https://www.linkedin.com/in/shubham-patel28/)
-Rohan Samavedam - Full Stack Developer - [Linkedin](https://www.linkedin.com/in/rohan-samavedam-6a3612156/)
+- Saneel Daniel - Full Stack Developer - [Linkedin](https://www.linkedin.com/in/saneel-daniel/)
+
+- Shubham Patel - Full Stack Developer - [Linkedin](https://www.linkedin.com/in/shubham-patel28/)
+
+- Rohan Samavedam - Full Stack Developer - [Linkedin](https://www.linkedin.com/in/rohan-samavedam-6a3612156/)
