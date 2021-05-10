@@ -14,6 +14,8 @@ import { withAuthenticator } from "aws-amplify-react-native";
 
 import { Auth } from 'aws-amplify';
 import axios from 'axios';
+import Amplify from "@aws-amplify/core";
+// import Auth from "@aws-amplify/auth";
 
 const DATA = [
   {
@@ -45,8 +47,10 @@ const DATA = [
 
 const Item = ({ title, score }) => (
   <View style={styles.item}>
-    <Text style={styles.title}> {title}  <Text style={styles.score}> {score} </Text>
-</Text>
+    <Text style={styles.title}>
+      {" "}
+      {title} <Text style={styles.score}> {score} </Text>
+    </Text>
   </View>
 );
 
@@ -79,19 +83,21 @@ const HistoryScreen = () => {
   useEffect(() => {
     if (user === null) {
       Auth.currentAuthenticatedUser({
-        bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-        }).then(user => {
-          SET_USER_NAME(user.attributes.email)
+        bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+      })
+        .then((user) => {
+          SET_USER_NAME(user.attributes.email);
         })
         .catch(err => console.log(err));
+        getUserScores()
     } else {
       getUserScores()
     }
   }, [user]);
 
-  useEffect(() => {
-    getUserScores()
-  }, [destinationName]);
+  // useEffect(() => {
+  //   getUserScores()
+  // }, [destinationName]);
 
   const renderItem = ({ item }) => (
     <View>
@@ -133,4 +139,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withAuthenticator(HistoryScreen, true)
+export default withAuthenticator(HistoryScreen)

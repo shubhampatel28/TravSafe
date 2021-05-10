@@ -9,10 +9,10 @@ export const initialstate = {
 
 // Selector
 const reducer = (state, action) => {
-  console.log(
-    "Reducer Action Logged (Reducer.js -> reducer) >>>>>> Action: ",
-    action
-  );
+  // console.log(
+  //   "Reducer Action Logged (Reducer.js -> reducer) >>>>>> Action: ",
+  //   action
+  // );
   switch (action.type) {
     case "SET_USER_NAME":
       return {
