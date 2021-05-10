@@ -4,6 +4,7 @@ export const initialstate = {
   stateName: "",
   countryName: "",
   destinationObject: null,
+  travelWarning: null,
 };
 
 // Selector
@@ -13,10 +14,15 @@ const reducer = (state, action) => {
     action
   );
   switch (action.type) {
-    case "SET_USER":
+    case "SET_USER_NAME":
       return {
         ...state,
-        user: action.user,
+        user: action.payload,
+      };
+    case "SET_TRAVEL_WARNING":
+      return {
+        ...state,
+        travelWarning: action.payload,
       };
     case "SET_DESTINATION_NAME":
       return {

@@ -24,6 +24,13 @@ const AppState = (props) => {
     });
   };
 
+  const SET_USER_NAME = (newuserName) => {
+    dispatch({
+      type: "SET_USER_NAME",
+      payload: newuserName,
+    });
+  };
+
   const SET_STATE_NAME = (newStateName) => {
     dispatch({
       type: "SET_STATE_NAME",
@@ -64,11 +71,13 @@ const AppState = (props) => {
         countryName: state.countryName,
         latLongObj: state.latLongObj,
         destinationObject: state.destinationObject,
+        user: state.user,
         SET_DESTINATION_NAME,
         SET_STATE_NAME,
         SET_COUNTRY_NAME,
         SET_LATLONG_OBJECT,
         SET_DESTINATION_OBJECT,
+        SET_USER_NAME
       }}
     >
       {props.children}

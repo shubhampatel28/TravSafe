@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -9,8 +9,10 @@ import {
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
-
+import AppContext from "../context/app-context";
 import { withAuthenticator } from "aws-amplify-react-native";
+
+import { Auth } from 'aws-amplify';
 
 const DATA = [
   {
@@ -48,6 +50,21 @@ const Item = ({ title, score }) => (
 );
 
 const HistoryScreen = () => {
+  const { user, SET_USER_NAME } = React.useContext(
+    AppContext
+  );
+
+  useEffect(() => {
+    if (user === null) {
+      Auth.currentAuthenticatedUser({
+        bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+        }).then(user => {
+          SET_USER_NAME(user.attributes.email)
+        })
+        .catch(err => console.log(err));
+    }
+  }, [user]);
+
   const renderItem = ({ item }) => (
     <View>
       <Item title={item.title} score={item.score} />
@@ -86,4 +103,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withAuthenticator(HistoryScreen,true)
+export default withAuthenticator(HistoryScreen)

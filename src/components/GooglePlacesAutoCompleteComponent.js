@@ -81,6 +81,7 @@ export default function GooglePlacesAutocomplete(props) {
                   setSearchKeyword("");
                   setIsShowingResults(false);
                   SET_DESTINATION_NAME(item.structured_formatting.main_text);
+
                   if (item.terms[2] !== undefined) {
                     SET_COUNTRY_NAME(item.terms[2]["value"]);
                     SET_STATE_NAME(item.terms[1]["value"]);

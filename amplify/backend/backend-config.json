@@ -83,8 +83,6 @@
     "UserDataTable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
-<<<<<<< HEAD
-=======
     }
   },
   "auth": {
@@ -93,7 +91,6 @@
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false
->>>>>>> e54478399b8c6e9980b88e665b01a98a3f0980a8
     }
   }
 }

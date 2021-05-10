@@ -4560,6 +4560,14 @@
     "js-yaml" "^3.13.1"
     "parse-json" "^4.0.0"
 
+"country-data@^0.0.31":
+  "integrity" "sha1-gJZrjh0Uf6bWpYnTKTP4eTd0lW0="
+  "resolved" "https://registry.npmjs.org/country-data/-/country-data-0.0.31.tgz"
+  "version" "0.0.31"
+  dependencies:
+    "currency-symbol-map" "~2"
+    "underscore" ">1.4.4"
+
 "create-react-class@^15.6.2":
   "integrity" "sha512-QZv4sFWG9S5RUvkTYWbflxeZX+JG7Cz0Tn33rQBJ+WFQTqTfUTjMjiv9tnfXazjsO5r0KhPs+AqCjyrQX6h2ng=="
   "resolved" "https://registry.npmjs.org/create-react-class/-/create-react-class-15.7.0.tgz"
@@ -4623,6 +4631,11 @@
   "integrity" "sha512-jXKhWqXPmlUeoQnF/EhTtTl4C9SnrxSH/jZUih3jmO6lBKr99rP3/+FmrMj4EFpOXzMtXHAZkd3x0E6h6Fgflw=="
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.0.8.tgz"
   "version" "3.0.8"
+
+"currency-symbol-map@~2":
+  "integrity" "sha1-KzwYcv8aws5ZXYJz5Y4f/wJyrqI="
+  "resolved" "https://registry.npmjs.org/currency-symbol-map/-/currency-symbol-map-2.2.0.tgz"
+  "version" "2.2.0"
 
 "dayjs@^1.8.15":
   "integrity" "sha512-RI/Hh4kqRc1UKLOAf/T5zdMMX5DQIlDxwUe3wSyMMnEbGunnpENCdbUgM+dW7kXidZqCttBrmw7BhN4TMddkCw=="
@@ -8595,6 +8608,11 @@
     "has-bigints" "^1.0.1"
     "has-symbols" "^1.0.2"
     "which-boxed-primitive" "^1.0.2"
+
+"underscore@>1.4.4":
+  "integrity" "sha512-hzSoAVtJF+3ZtiFX0VgfFPHEDRm7Y/QPjGyNo4TVdnDTdft3tr8hEkD25a1jC+TjTuE7tkHGKkhwCgs9dgBB2g=="
+  "resolved" "https://registry.npmjs.org/underscore/-/underscore-1.13.1.tgz"
+  "version" "1.13.1"
 
 "unfetch@^4.2.0":
   "integrity" "sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA=="
