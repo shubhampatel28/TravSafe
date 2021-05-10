@@ -27,7 +27,7 @@
         },
         "GetUserDataActivity": {
           "deploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",
-          "s3Key": "amplify-builds/GetUserDataActivity-517a4c6b416430483636-build.zip"
+          "s3Key": "amplify-builds/GetUserDataActivity-5071565037576367304f-build.zip"
         }
       },
       "auth": {

@@ -40,10 +40,32 @@ const ScoreScreen = () => {
   const countryCodeUrl =
     "https://restcountries.eu/rest/v2/name/" + countryName + "?fullText=true";
   useEffect(() => {
-    if (user) {
+    if(user){
       console.log(user, destinationName, countryName, stateName);
+      createSearchRecord()
     }
   }, [destinationName]);
+
+  const createSearchRecord = () => {
+    const location = destinationName
+    const username = user
+    const score = travelScore
+
+    console.log("inside here: ", location, username, score)
+
+    const queryurl = "https://1pa8hubn2h.execute-api.us-west-2.amazonaws.com/travamplif/userdata?username=" + 
+                      username + "&location=" + location + "&score=" + score;
+
+    console.log(queryurl)
+
+    axios.post(queryurl, {})
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+  
 
   const getCountryCode = () => {
     axios

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React , { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,8 +12,10 @@ import { ScrollView } from "react-native-gesture-handler";
 import AppContext from "../context/app-context";
 import { withAuthenticator } from "aws-amplify-react-native";
 
+import { Auth } from 'aws-amplify';
+import axios from 'axios';
 import Amplify from "@aws-amplify/core";
-import Auth from "@aws-amplify/auth";
+// import Auth from "@aws-amplify/auth";
 
 const DATA = [
   {
@@ -53,7 +55,30 @@ const Item = ({ title, score }) => (
 );
 
 const HistoryScreen = () => {
-  const { user, SET_USER_NAME } = React.useContext(AppContext);
+  const { user, SET_USER_NAME, destinationName } = React.useContext(
+    AppContext
+  );
+
+  const [userScores] = useState([]);
+
+  const getUserScores = () => {
+    const queryurl = "https://1pa8hubn2h.execute-api.us-west-2.amazonaws.com/travamplif/userdata?username=" + user;
+    axios
+      .get(queryurl)
+      .then(function (response) {
+        // console.log("-----------------------", response.data.data.Items)
+        const arr = response.data.data.Items;
+        userScores.length = 0;
+        arr.map((value) => {
+          userScores.push(value)
+        })
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      })
+  }
+
+  getUserScores()
 
   useEffect(() => {
     if (user === null) {
@@ -63,22 +88,29 @@ const HistoryScreen = () => {
         .then((user) => {
           SET_USER_NAME(user.attributes.email);
         })
-        .catch((err) => console.log(err));
+        .catch(err => console.log(err));
+        getUserScores()
+    } else {
+      getUserScores()
     }
   }, [user]);
 
+  // useEffect(() => {
+  //   getUserScores()
+  // }, [destinationName]);
+
   const renderItem = ({ item }) => (
     <View>
-      <Item title={item.title} score={item.score} />
+      <Item title={item.location} score={item.score} />
     </View>
   );
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={DATA}
+        data={userScores}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.searchid}
       />
     </SafeAreaView>
   );
@@ -98,11 +130,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
+    alignSelf: "flex-start"
   },
   score: {
     fontSize: 20,
-    textAlign: "right",
-  },
+    alignSelf: "flex-end",
+    backgroundColor: "orange"
+  }
 });
 
-export default withAuthenticator(HistoryScreen);
+export default withAuthenticator(HistoryScreen)
