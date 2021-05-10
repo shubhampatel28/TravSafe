@@ -30,7 +30,7 @@ app.get("/news", function (req, res) {
   // Add your code here
   console.log(req.query);
   const newsQuery = req.query.newsQuery;
-  const apikey = "e25942f77a1249899e321f5b6f813995";
+  const apikey = "b875c051fb364f538cf93b357340d105";
   const requestURL =
     "https://newsapi.org/v2/everything?q=" +
     newsQuery +

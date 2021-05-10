@@ -36,7 +36,8 @@ const ScoreScreen = () => {
 console.log("State User:  ", user)
   useEffect(() => {
     if(user){
-      console.log(user, destinationName, countryName, stateName)
+      console.log(user, destinationName, countryName, stateName);
+      createSearchRecord()
     }
 //     if (destinationName === "") {
 //       setLocationFound(false)
@@ -49,6 +50,26 @@ console.log("State User:  ", user)
 //       }
 //     }
   }, [destinationName]);
+
+  const createSearchRecord = () => {
+    const location = destinationName
+    const username = user
+    const score = travelScore
+
+    console.log("inside here: ", location, username, score)
+
+    const queryurl = "https://1pa8hubn2h.execute-api.us-west-2.amazonaws.com/travamplif/userdata?username=" + 
+                      username + "&location=" + location + "&score=" + score;
+
+    console.log(queryurl)
+
+    axios.post(queryurl, {})
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
+  }
   
 
   const getCountryCode = () => {

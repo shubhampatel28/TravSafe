@@ -12,6 +12,7 @@ const AppState = (props) => {
     countryName: null,
     destinationObject: null,
     latLongObj: {},
+    travelWarning: null,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -21,6 +22,13 @@ const AppState = (props) => {
     dispatch({
       type: "SET_DESTINATION_NAME",
       payload: newdestinationName,
+    });
+  };
+
+  const SET_TRAVEL_WARNING = (newDesinationWarning) => {
+    dispatch({
+      type: "SET_TRAVEL_WARNING",
+      payload: newDesinationWarning,
     });
   };
 
@@ -72,12 +80,14 @@ const AppState = (props) => {
         latLongObj: state.latLongObj,
         destinationObject: state.destinationObject,
         user: state.user,
+        travelWarning: state.travelWarning,
         SET_DESTINATION_NAME,
         SET_STATE_NAME,
         SET_COUNTRY_NAME,
         SET_LATLONG_OBJECT,
         SET_DESTINATION_OBJECT,
-        SET_USER_NAME
+        SET_USER_NAME,
+        SET_TRAVEL_WARNING
       }}
     >
       {props.children}

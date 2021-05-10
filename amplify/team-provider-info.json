@@ -19,7 +19,7 @@
         },
         "GetNewsActivity": {
           "deploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",
-          "s3Key": "amplify-builds/GetNewsActivity-56327471424c6b474c71-build.zip"
+          "s3Key": "amplify-builds/GetNewsActivity-537931464a786e434e30-build.zip"
         },
         "GetScoreActivity": {
           "deploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",
@@ -27,7 +27,7 @@
         },
         "GetUserDataActivity": {
           "deploymentBucketName": "amplify-finalfinalprojectrep-travamplif-05544-deployment",
-          "s3Key": "amplify-builds/GetUserDataActivity-517a4c6b416430483636-build.zip"
+          "s3Key": "amplify-builds/GetUserDataActivity-5071565037576367304f-build.zip"
         }
       },
       "auth": {

@@ -42,8 +42,9 @@ app.use(function(req, res, next) {
 app.get('/userdata', function(req, res) {
   var params = {
     TableName: "UserDataTable-travamplif",
-    Key: {
-      username: req.query.username
+    FilterExpression: "username = :username",
+    ExpressionAttributeValues: {
+      ":username": req.query.username
     }
   }
   console.log(req.query.username);
