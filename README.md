@@ -7,7 +7,7 @@
 
 ## What is TravSafe?
 
-![poster](images/poster-temp.png)
+![poster](images/U14_Poster.jpg)
 
 ## What does it do?
 
