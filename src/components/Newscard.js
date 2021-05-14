@@ -57,13 +57,16 @@ const Newscard = ({ item }) => {
 
 const styles = StyleSheet.create({
   cardView: {
-    backgroundColor: "white",
-    margin: width * 0.1,
-    borderRadius: width * 0.05,
-    shadowColor: "#000",
-    shadowOffset: { width: 0.5, height: 0.5 },
-    shadowOpacity: 2,
-    shadowRadius: 5,
+    backgroundColor: "#383234",
+    // margin: width * 0.1,
+    // borderRadius: width * 0.05,
+    // shadowColor: "#000",
+    // shadowOffset: { width: 0.5, height: 0.5 },
+    // shadowOpacity: 2,
+    // shadowRadius: 5,
+    padding: 10,
+    margin: 10,
+
   },
   newsHeaderContainer: {
     flexDirection: "column",
@@ -72,12 +75,12 @@ const styles = StyleSheet.create({
     marginHorizontal: width * 0.03,
     marginTop: width * 0.02,
     marginBottom: width * 0,
-    color: "black",
+    color: "white",
     fontSize: 20,
     fontWeight: "bold",
   },
   description: {
-    color: "gray",
+    color: "white",
     fontSize: 18,
   },
   image: {

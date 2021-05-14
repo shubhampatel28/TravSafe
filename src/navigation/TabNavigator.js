@@ -38,8 +38,11 @@ const BottomTabNavigator = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "skyblue",
-        inactiveTintColor: "gray",
+        activeTintColor: "white",
+        inactiveTintColor: "lightgrey",
+        style: {
+          backgroundColor: "#383234"
+        }
       }}
     >
       <Tab.Screen

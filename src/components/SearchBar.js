@@ -38,21 +38,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "baseline",
     padding: "20px",
+    backgroundColor: "black"
     
   },
   searchInput: {
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 12,
-    marginTop: 5,
+    marginTop: 10,
     borderColor: "lightgrey",
-    width: "82%",
+    width: "90%",
     height: 28,
     alignSelf: "flex-start",
     backgroundColor: "lightgrey"
   },
   Ionicon: {
     fontSize: 28,
-    marginBottom: 10,
+    marginBottom: 20,
     marginTop: 5,
     marginLeft: width * 0.045,
   },

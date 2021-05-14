@@ -135,15 +135,15 @@ const WeatherScreen = () => {
               var dt = new Date(hour.item.dt * 1000);
               return (
                 <View style={styles.hour}>
-                  <Text>{dt.toLocaleTimeString().replace(/:\d+ /, " ")}</Text>
-                  <Text>{Math.round(hour.item.temp)}°C</Text>
+                  <Text style={{color: "white"}}>{dt.toLocaleTimeString().replace(/:\d+ /, " ")}</Text>
+                  <Text style={{color: "white"}}>{Math.round(hour.item.temp)}°C</Text>
                   <Image
                     style={styles.smallIcon}
                     source={{
                       uri: `http://openweathermap.org/img/wn/${weather.icon}@4x.png`,
                     }}
                   />
-                  <Text>{weather.description}</Text>
+                  <Text style={{color: "white"}}>{weather.description}</Text>
                 </View>
               );
             }}
@@ -165,8 +165,8 @@ const WeatherScreen = () => {
                 }}
               />
               <View style={styles.dayDetails}>
-                <Text>{dt.toLocaleDateString()}</Text>
-                <Text>{weather.description}</Text>
+                <Text style={{color: "white"}}>{dt.toLocaleDateString()}</Text>
+                <Text style={{color: "white"}}>{weather.description}</Text>
               </View>
             </View>
           );
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "black",
     alignItems: "center",
     justifyContent: "flex-start",
   },
@@ -207,11 +207,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     alignContent: "center",
+    color: "white"
   },
   currentTemp: {
     fontSize: 32,
     fontWeight: "bold",
     textAlign: "center",
+    color: "white"
   },
   currentDescription: {
     width: "100%",
@@ -219,10 +221,12 @@ const styles = StyleSheet.create({
     fontWeight: "200",
     fontSize: 24,
     marginBottom: 24,
+    color: "white"
   },
   hour: {
     padding: 6,
     alignItems: "center",
+    color: "white"
   },
   day: {
     flexDirection: "row",
@@ -234,6 +238,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     alignSelf: "center",
     fontSize: 20,
+    color: "white"
   },
   largeIcon: {
     width: 250,

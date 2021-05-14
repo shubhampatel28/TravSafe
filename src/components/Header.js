@@ -81,11 +81,15 @@ const Header = () => {
 
 // define your styles
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    backgroundColor: "black",
+    color: "white"
+  },
   headerText: {
-    fontSize: 30,
-    padding: 5,
+    fontSize: 28,
+    padding: 10,
     fontFamily: "Verdana",
+    color: "white"
   },
   headerView: {
     flexDirection: "row",

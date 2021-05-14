@@ -100,7 +100,7 @@ const NewsScreen = ({ navigation }) => {
   };
 
   return (
-    <View>
+    <View style={{backgroundColor: "black"}}>
       <View style={styles.buttonTabView}>
         <TouchableOpacity
           activeOpacity={0.6}
@@ -166,6 +166,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     marginTop: 10,
+    paddingBottom: 10
   },
   tabButtons: {
     alignSelf: "center",
@@ -181,13 +182,15 @@ const styles = StyleSheet.create({
   },
   tabButton: {
     backgroundColor: "transparent",
-    borderRadius: 36,
+    borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 6,
     alignItems: "center",
+    backgroundColor: "black",
+    width: "47%",
   },
   tabButtonActive: {
-    backgroundColor: "#c0f0ff",
+    backgroundColor: "#383234",
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 6,
@@ -197,13 +200,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "normal",
     textAlign: "center",
-    color: "#000",
+    color: "white",
   },
   tabButtonTitleActive: {
     fontSize: 18,
     fontWeight: "normal",
     textAlign: "center",
-    color: "#000",
+    color: "white",
   },
   flatList: {
     alignContent: "center",

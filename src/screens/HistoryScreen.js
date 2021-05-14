@@ -93,7 +93,7 @@ const HistoryScreen = () => {
     } else {
       getUserScores()
     }
-  }, [user]);
+  });
 
   // useEffect(() => {
   //   getUserScores()
@@ -121,16 +121,18 @@ const styles = StyleSheet.create({
     padding: 10,
     width: "100%",
     marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: "black"
   },
   item: {
-    backgroundColor: "#DCDCDC",
+    backgroundColor: "#383234",
     padding: 20,
     marginVertical: 2,
     marginHorizontal: 16,
   },
   title: {
     fontSize: 20,
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
+    color: "white"
   },
   score: {
     fontSize: 20,

@@ -149,6 +149,7 @@ const ScoreScreen = () => {
           textAlign: "center",
           alignItems: "center",
           flex: 1,
+          backgroundColor: "black"
         }}
       >
         <Card containerStyle={styles.innerCardContainer}>
@@ -166,7 +167,7 @@ const ScoreScreen = () => {
     );
   } else {
     return (
-      <ScrollView>
+      <ScrollView style={{backgroundColor: "black"}}>
         <View style={styles.center}>
           <Card containerStyle={styles.secondCardContainer}>
             <View style={{ width: 300, alignItems: "left" }}>
@@ -291,7 +292,7 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     textAlign: "center",
-    backgroundColor: "#d1d5de",
+    backgroundColor: "black",
     paddingBottom: 50,
     paddingTop: 20,
   },
@@ -310,7 +311,8 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 20,
     borderRadius: 5,
-    borderColor: "white",
+    borderColor: "#383234",
+    backgroundColor: "#383234",
   },
   innerCardContainer: {
     width: "90%",
@@ -318,9 +320,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 20,
     paddingBottom: 20,
-    borderRadius: 10,
-    borderColor: "white",
+    borderRadius: 5,
+    borderColor: "black",
     shadowColor: "grey",
+    backgroundColor: "black"
   },
   secondCardTitleText: {
     fontSize: 20,
@@ -329,6 +332,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "Verdana",
     padding: 10,
+    color: "white"
   },
   scoreTextRed: {
     fontSize: 24,
@@ -364,6 +368,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "Verdana",
     textAlign: "center",
+    color: "white"
   },
   thirdCardContainer: {
     width: "90%",
