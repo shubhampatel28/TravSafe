@@ -1,4 +1,4 @@
-# TravSafe-Final Project Repo
+# TravSafe-Final Project
 
 ## Problem Statement
 
