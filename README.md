@@ -44,6 +44,6 @@
 
 - Saneel Daniel - Full Stack Developer - [Linkedin](https://www.linkedin.com/in/saneel-daniel/)
 
-- Shubham Patel - Full Stack Developer - [Linkedin](https://www.linkedin.com/in/shubham-patel28/)
+- Shubham Patel - Software Engineer - [Linkedin](https://www.linkedin.com/in/shubham-patel28/)
 
 - Rohan Samavedam - Full Stack Developer - [Linkedin](https://www.linkedin.com/in/rohan-samavedam-6a3612156/)
